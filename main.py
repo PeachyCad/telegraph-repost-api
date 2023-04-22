@@ -16,8 +16,8 @@ def send_telegraph(file_path: str, telegraph_token: str, short_name : str, autho
     response = telegraph.create_page(title, html_content = formated_html)
     return response
 
-def send_telegram(text: str, token: str, source_id: str):
-    url = "https://api.telegram.org/bot" + token
+def send_telegram(text: str, telegram_bot_token: str, source_id: str):
+    url = "https://api.telegram.org/bot" + telegram_bot_token
     channel_id = source_id
     method = url + "/sendMessage"
 
@@ -30,4 +30,4 @@ if __name__ == "__main__":
     params = initialization_params()
     
     send_response = send_telegraph(params['file_path'], params['telegraph_token'], params['short_name'], params['author_name'], params['title'])
-    send_telegram(send_response["url"], params['telegram_token'], params['source_id'])
+    send_telegram(send_response["url"], params['telegram_bot_token'], params['source_id'])
